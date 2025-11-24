@@ -1,27 +1,28 @@
 ﻿using System;
 using Newtonsoft.Json;
+using ScarNetwork.Scripts.Core;
 using UnityEngine;
 
-namespace ScarNetwork.Scriptes.Network_Object
+namespace ScarNetwork.Scripts.Network_Object
 {
     public class NetworkObject : MonoBehaviour
     {
-        private NetworkConnector _networkConnector;
+        private NetworkManager _networkManager;
         private int _objectID;
         private string _ownerID;
 
         public event Action<RPCMethodData> onReceiveRpc;
 
-        public bool IsConnected => _networkConnector.IsConnected;
-        public bool IsMaster => _networkConnector.IsMaster;
+        public bool IsConnected => _networkManager.IsConnected;
+        public bool IsMaster => _networkManager.IsMaster;
 
-        public bool IsMine => _networkConnector.IsMine(_ownerID);
+        public bool IsMine => _networkManager.IsMine(_ownerID);
 
         private void Start()
         {
             NetworkManager.I.NetObjectStorage.RegisterObject(this);
-            _networkConnector = NetworkManager.I.NetworkConnector;
-            Debug.Log("NO Start");
+            _networkManager = NetworkManager.I;
+            Debug.Log("network obj Start");
         }
 
         public void CalRPC(string methodName, string parameters)
@@ -40,7 +41,7 @@ namespace ScarNetwork.Scriptes.Network_Object
                 Data = rpcDataStr
             };
 
-            NetworkManager.I.NetworkConnector.SendRPC(objectNetworkData);
+           // NetworkManager.I.NetworkConnector.SendRPC(objectNetworkData);
         }
 
         public void ReceiveRPC(RPCMethodData methodData)

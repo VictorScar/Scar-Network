@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using ScarNetwork.Scriptes.Network_Player;
+using ScarNetwork.Scripts.Server;
 using UnityEngine;
 
 
 public class ClientManager : MonoBehaviour
 {
-    private List<PlayerHandler> _players = new List<PlayerHandler>();
+    private List<ClientHandler> _players = new List<ClientHandler>();
     
     public static ClientManager I { get; private set; }
 
@@ -21,12 +21,12 @@ public class ClientManager : MonoBehaviour
         }
     }
 
-    public void AddClient(PlayerHandler client)
+    public void AddClient(ClientHandler client)
     {
         _players.Add(client);
     }
     
-    public void RemoveClient(PlayerHandler client)
+    public void RemoveClient(ClientHandler client)
     {
         _players.Remove(client);
     }

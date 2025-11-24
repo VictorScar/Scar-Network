@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using ScarNetwork.Scriptes.Network_Object;
-using ScarNetwork.Scriptes.Network_Player;
+using ScarNetwork.Scripts.Core;
+using ScarNetwork.Scripts.Message_Data;
+using ScarNetwork.Scripts.Network_Object;
+using ScarNetwork.Scripts.Server;
 using UnityEngine;
 
 public class NetworkConnector : MonoBehaviour
 {
-    [SerializeField] private LocalServerSettings serverSettings;
-    [SerializeField] private ClientComms client;
+    /*[SerializeField] private ServerSettings serverSettings;
+    [SerializeField] private NetworkClient client;
     [SerializeField] private LocalGameServer _server;
 
     private string _localPlayerID;
@@ -44,8 +46,8 @@ public class NetworkConnector : MonoBehaviour
 
     public void HostLocalGame()
     {
-        _server = new LocalGameServer(serverSettings);
-        _server.StartServer();
+        _server = new LocalGameServer();
+        _server.StartServer(serverSettings);
         JoinToLocalGame();
     }
 
@@ -115,5 +117,5 @@ public class NetworkConnector : MonoBehaviour
     public void Disconnect()
     {
         client.Disconnect();
-    }
+    }*/
 }

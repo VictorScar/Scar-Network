@@ -1,8 +1,8 @@
 using WebSocketSharp;
 
-namespace ScarNetwork.Scriptes.Network_Player
+namespace ScarNetwork.Scripts.Server
 {
-    public class NetworkClient
+    public class ServerNetworkClient
     {
         private string _nickName;
         private string _clientID;
@@ -18,7 +18,7 @@ namespace ScarNetwork.Scriptes.Network_Player
         public string ClientID => _clientID;
         public WebSocket Socket => _socket;
     
-        public NetworkClient(NetworkClientData clientData)
+        public ServerNetworkClient(NetworkClientData clientData)
         {
             _nickName = clientData.NickName;
             _clientID = clientData.ClientID;

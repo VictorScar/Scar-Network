@@ -1,21 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using ScarNetwork.Scripts.Core;
 using ScarToolkit.ScarUI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameStarter : MonoBehaviour
 {
     [SerializeField] private UISystem uiSystem;
-    private NetworkConnector _networkConnector;
+    private NetworkManager _networkManager;
 
     private MainMenu _mainMenu;
 
     private void Start()
     {
         uiSystem.Init();
-        _networkConnector = NetworkManager.I.NetworkConnector;
+        _networkManager = NetworkManager.I;
         var mainMenuScreen = uiSystem.GetScreen<MainMenuScreen>();
         _mainMenu = uiSystem.GetScreen<MainMenuScreen>().MainMenu;
 
@@ -31,22 +28,22 @@ public class GameStarter : MonoBehaviour
 
     private void OnSendMessageClick()
     {
-        _networkConnector.SendNetworkMessage("BOBOB");
+        _networkManager.Client.SendNetworkMessage("BOBOB");
     }
 
     public void HostLocalGame()
     {
-        _networkConnector.HostLocalGame();
+        _networkManager.StartServer();
     }
 
     public void JoinToLocalGame()
     {
-        _networkConnector.JoinToLocalGame();
+        _networkManager.JoinToGame();
     }
     
     public void DisconnectFromServer()
     {
-        _networkConnector.Disconnect();
+        _networkManager.Disconnect();
     }
 
     private void OnDestroy()

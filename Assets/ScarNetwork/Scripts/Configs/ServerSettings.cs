@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(menuName = "Configs/LocalServer", fileName = "LocalServerSettings")]
-public class LocalServerSettings : ScriptableObject
+[CreateAssetMenu(menuName = "Configs/LocalServer", fileName = "ServerSettings")]
+public class ServerSettings : ScriptableObject
 {
     [SerializeField] private string host = "ws://localhost";
     [SerializeField] private int port = 3000;

@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using ScarNetwork.Scriptes.Network_Object;
+using ScarNetwork.Scripts.Network_Object;
 using UnityEngine;
 
 public class NetworkObjectStorage : MonoBehaviour
